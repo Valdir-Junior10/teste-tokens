@@ -1,0 +1,10 @@
+{
+  "tokenSetOrder": [
+    "Global_base/Foundation",
+    "Global_base/Primitives",
+    "Brands/Medsoft/Themes/Dark/Spacing",
+    "Brands/Medsoft/Themes/Light/Spacing",
+    "Brands/Medme/Themes/Light/Spacing",
+    "Brands/Medme/Themes/Dark/Spacing"
+  ]
+}

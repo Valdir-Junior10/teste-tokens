@@ -1,0 +1,10 @@
+{
+  "tp": {
+    "spacing": {
+      "md": {
+        "value": "{tp.dimension.fixed.11}",
+        "type": "spacing"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "tp": {
+    "spacing": {
+      "xl": {
+        "value": "{tp.dimension.fixed.15}",
+        "type": "spacing"
+      }
+    }
+  }
+}

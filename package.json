@@ -1,0 +1,21 @@
+{
+  "name": "teste-tokens",
+  "version": "1.0.0",
+  "description": "teste tokens",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "valdir",
+  "license": "ISC",
+  "devDependencies": {
+    "style-dictionary": "^4.1.4"
+  },
+  "dependencies": {
+    "@tokens-studio/sd-transforms": "^1.2.6",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7",
+    "url": "^0.11.4"
+  }
+}
