@@ -1,128 +1,190 @@
 import { register } from '@tokens-studio/sd-transforms';
 import StyleDictionary from 'style-dictionary';
-import {
-  configFileBrand,
-  configFileBreakpoint,
-  configFileComps,
-  configFileScheme
-} from './config-files.js';
-import {
-  brandsNames,
-  getBreakpointNames,
-  getCompsNames,
-  getSchemeNames,
-  getThemeNames
-} from './config-get-names.js';
+import { ConfigFile } from './config-files.js';
+import { Entities } from './entities.js';
 
 register(StyleDictionary);
 
-const Global = new StyleDictionary({
-  source: ['figma/Global_base/*.json'],
-  platforms: {
-    css: {
-      transformGroup: 'css',
-      buildPath: 'dist/css/',
-      files: [
-        {
-          filter: (token) =>
-            token.filePath.includes(`figma/Global_base/Foundation.json`),
-          destination: 'global.css',
-          format: 'css/variables'
-        }
-      ]
-    },
-    scss: {
-      transformGroup: 'scss',
-      buildPath: 'dist/scss/',
-      files: [
-        {
-          filter: (token) =>
-            token.filePath.includes(`figma/Global_base/Foundation.json`),
-          destination: 'global.scss',
-          format: 'scss/variables'
-        }
-      ]
-    }
-  },
-  log: {
-    warnings: 'warn', // 'warn' | 'error' | 'disabled'
-    verbosity: 'verbose', // 'default' | 'silent' | 'verbose'
-    errors: {
-      brokenReferences: 'throw' // 'throw' | 'console'
-    }
-  }
-});
+class Build {
+  static BRAND_NAMES = Entities.getBrands();
 
-await Global.buildAllPlatforms();
+  static async execute() {
+    await this.compileGlobal();
+    await this.compileBrands();
+    await this.compileComponents();
+    await this.compileSchemes();
+    await this.compileBreakpoints();
+  }
+
+  static async compileGlobal() {
+    const global = new StyleDictionary({
+      source: ['figma/global-base/*.json'],
+      platforms: {
+        css: {
+          transformGroup: 'css',
+          buildPath: 'dist/css/',
+          files: [
+            {
+              filter: (token) =>
+                token.filePath.includes(`figma/global-base/foundation.json`),
+              destination: 'global.css',
+              format: 'css/variables'
+            }
+          ]
+        },
+        scss: {
+          transformGroup: 'scss',
+          buildPath: 'dist/scss/',
+          files: [
+            {
+              filter: (token) =>
+                token.filePath.includes(`figma/global-base/foundation.json`),
+              destination: 'global.scss',
+              format: 'scss/variables'
+            }
+          ]
+        }
+      }
+    });
+
+    return global.buildAllPlatforms();
+  }
+
+  static async compileBrands() {
+    const brandPromises = this.BRAND_NAMES.map((brand) => {
+      console.log('======================================');
+      console.log(`Processing: [${brand}]`);
+
+      const brandSD = new StyleDictionary(ConfigFile.brand(brand));
+
+      return brandSD.buildAllPlatforms();
+    });
+
+    return Promise.all(brandPromises);
+  }
+
+  static async compileComponents() {
+    const componentPromises = [];
+
+    this.BRAND_NAMES.forEach((brand) => {
+      Entities.getThemes(brand).forEach((theme) => {
+        Entities.getComponents(brand, theme).forEach((component) => {
+          console.log('======================================');
+          console.log(`Processing: [${brand}] [${theme}] [${component}]`);
+
+          const componentSD = new StyleDictionary(
+            ConfigFile.component(brand, theme, component)
+          );
+
+          componentPromises.push(componentSD.buildAllPlatforms());
+        });
+      });
+    });
+
+    return Promise.all(componentPromises);
+  }
+
+  static async compileSchemes() {
+    const schemePromises = [];
+
+    this.BRAND_NAMES.forEach((brand) => {
+      Entities.getThemes(brand).forEach((theme) => {
+        Entities.getSchemes(brand, theme).forEach((scheme) => {
+          console.log('======================================');
+          console.log(`Processing: [${brand}] [${theme}] [${scheme}]`);
+
+          const schemeSD = new StyleDictionary(
+            ConfigFile.scheme(brand, theme, scheme)
+          );
+
+          schemePromises.push(schemeSD.buildAllPlatforms());
+        });
+      });
+    });
+
+    return Promise.all(schemePromises);
+  }
+
+  static async compileBreakpoints() {
+    const breakpointPromises = [];
+
+    this.BRAND_NAMES.forEach((brand) => {
+      Entities.getThemes(brand).forEach((theme) => {
+        Entities.getBreakpoints(brand, theme).forEach((breakpoint) => {
+          console.log('======================================');
+          console.log(`Processing: [${brand}] [${theme}] [${breakpoint}]`);
+
+          const breakpointSD = new StyleDictionary(
+            ConfigFile.breakpoint(brand, theme, breakpoint)
+          );
+
+          breakpointPromises.push(breakpointSD.buildAllPlatforms());
+        });
+      });
+    });
+
+    return Promise.all(breakpointPromises);
+  }
+}
+
+Build.execute();
+
+// const BRAND_NAMES = Entities.getBrands();
 
 // Compila tokens de Brand
-brandsNames.forEach(function (brand) {
-  console.log('======================================');
-  console.log(`Processing: [${brand}]`);
+// this.BRAND_NAMES.forEach(function (brand) {
+//   console.log('======================================');
+//   console.log(`Processing: [${brand}]`);
 
-  const brands = new StyleDictionary(configFileBrand(brand));
-  brands.log.verbose = true;
-  brands.log.errors.brokenReferences = 'throw'; // Trata referências quebradas como erros
+//   const brands = new StyleDictionary(ConfigFile.brand(brand));
 
-  brands.buildAllPlatforms();
-});
+//   brands.buildAllPlatforms();
+// });
 
 // Compila tokens de Comps
-brandsNames.forEach(function (brand) {
-  const themesNames = getThemeNames('.', brand);
-  themesNames.forEach(function (themes) {
-    const comps = getCompsNames('.', brand, themes);
-    comps.forEach(function (comps) {
-      console.log('======================================');
-      console.log(`Processing: [${brand}] [${themes}] [${comps}]`);
+// this.BRAND_NAMES.forEach((brand) => {
+//   Entities.getThemes(brand).forEach((theme) => {
+//     Entities.getComponents(brand, theme).forEach((component) => {
+//       console.log('======================================');
+//       console.log(`Processing: [${brand}] [${theme}] [${component}]`);
 
-      const brandsComps = new StyleDictionary(
-        configFileComps(brand, themes, comps)
-      );
-      brandsComps.log.verbose = true;
-      brandsComps.log.errors.brokenReferences = 'throw'; // Trata referências quebradas como erros
+//       const brandsComps = new StyleDictionary(
+//         ConfigFile.component(brand, theme, component)
+//       );
 
-      brandsComps.buildAllPlatforms();
-    });
-  });
-});
+//       brandsComps.buildAllPlatforms();
+//     });
+//   });
+// });
 
 // Compila tokens de Scheme
-brandsNames.forEach(function (brand) {
-  const themesNames = getThemeNames('.', brand);
-  themesNames.forEach(function (themes) {
-    const schemes = getSchemeNames('.', brand, themes);
-    schemes.forEach(function (scheme) {
-      console.log('======================================');
-      console.log(`Processing: [${brand}] [${themes}] [${scheme}]`);
+// this.BRAND_NAMES.forEach((brand) => {
+//   Entities.getThemes(brand).forEach((theme) => {
+//     Entities.getSchemes(brand, theme).forEach((scheme) => {
+//       console.log('======================================');
+//       console.log(`Processing: [${brand}] [${theme}] [${scheme}]`);
 
-      const brandsSchemes = new StyleDictionary(
-        configFileScheme(brand, themes, scheme)
-      );
-      brandsSchemes.log.verbose = true;
-      brandsSchemes.log.errors.brokenReferences = 'throw'; // Trata referências quebradas como erros
+//       const brandsSchemes = new StyleDictionary(
+//         ConfigFile.scheme(brand, theme, scheme)
+//       );
 
-      brandsSchemes.buildAllPlatforms();
-    });
-  });
-});
+//       brandsSchemes.buildAllPlatforms();
+//     });
+//   });
+// });
 
 // Compila tokens de Breakpoint
-brandsNames.forEach(function (brand) {
-  const themesNames = getThemeNames('.', brand);
-  themesNames.forEach(function (themes) {
-    const breakpoints = getBreakpointNames('.', brand, themes);
-    breakpoints.forEach(function (breakpoint) {
-      console.log('======================================');
-      console.log(`Processing: [${brand}] [${themes}] [${breakpoint}]`);
+// this.BRAND_NAMES.forEach((brand) => {
+//   Entities.getThemes(brand).forEach((theme) => {
+//     Entities.getBreakpoints(brand, theme).forEach((breakpoint) => {
+//       console.log('======================================');
+//       console.log(`Processing: [${brand}] [${theme}] [${breakpoint}]`);
 
-      const brandsBreakpoint = new StyleDictionary(
-        configFileBreakpoint(brand, themes, breakpoint)
-      );
-      brandsBreakpoint.log.verbose = true;
-      brandsBreakpoint.log.errors.brokenReferences = 'throw'; // Trata referências quebradas como erros
+//       const brandsBreakpoint = new StyleDictionary(
+//         ConfigFile.breakpoint(brand, theme, breakpoint)
+//       );
 
-      brandsBreakpoint.buildAllPlatforms();
-    });
-  });
-});
+//       brandsBreakpoint.buildAllPlatforms();
+//     });
+//   });
+// });

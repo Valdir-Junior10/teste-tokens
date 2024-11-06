@@ -1,17 +1,18 @@
 {
   "tokenSetOrder": [
-    "Global_base/Primitives",
-    "Brands/Medme/Base",
-    "Brands/Medme/Themes/Default/Schemes/Dark/Base",
-    "Brands/Medme/Themes/Default/Schemes/Light/Base",
-    "Brands/Medme/Themes/Default/Breakpoint/360p/Base",
-    "Brands/Medme/Themes/Default/Breakpoint/1200p/Base",
-    "Brands/Medme/Themes/Default/Comps/Button",
-    "Brands/Medme/Themes/Billy/Schemes/Dark/Base",
-    "Brands/Medme/Themes/Billy/Schemes/Light/Base",
-    "Brands/Medme/Themes/Billy/Breakpoint/360p/Base",
-    "Brands/Medme/Themes/Billy/Breakpoint/1200p/Base",
-    "Brands/Medme/Themes/Billy/Comps/Button",
-    "Global_comps/Button"
+    "global-base/primitives",
+    "global-base/foundation",
+    "brands/medme/base",
+    "brands/medme/themes/default/schemes/dark/base",
+    "brands/medme/themes/default/schemes/light/base",
+    "brands/medme/themes/default/breakpoints/screen-xs/base",
+    "brands/medme/themes/default/breakpoints/screen-xl/base",
+    "brands/medme/themes/default/components/button/base",
+    "brands/medme/themes/billy/schemes/dark/base",
+    "brands/medme/themes/billy/schemes/light/base",
+    "brands/medme/themes/billy/breakpoints/screen-xs/base",
+    "brands/medme/themes/billy/breakpoints/screen-xl/base",
+    "brands/medme/themes/billy/components/button/base",
+    "components-global/button"
   ]
 }

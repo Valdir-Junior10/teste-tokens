@@ -3,6 +3,14 @@
  */
 
 :root {
-  --tp-spacing-teste-1: 38px;
-  --tp-spacing-teste-2: 20px;
+  --tp-shadow-up-1: [object Object],[object Object];
+  --tp-shadow-up-2: [object Object],[object Object];
+  --tp-shadow-up-3: [object Object],[object Object];
+  --tp-shadow-up-4: [object Object],[object Object];
+  --tp-shadow-up-5: [object Object],[object Object];
+  --tp-shadow-down-1: [object Object],[object Object];
+  --tp-shadow-down-2: [object Object],[object Object];
+  --tp-shadow-down-3: [object Object],[object Object];
+  --tp-shadow-down-4: [object Object],[object Object];
+  --tp-shadow-down-5: [object Object],[object Object];
 }
