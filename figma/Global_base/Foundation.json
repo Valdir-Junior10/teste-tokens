@@ -1,11 +1,11 @@
 {
   "tp": {
     "spacing": {
-      "xl": {
+      "teste-1": {
         "value": "{tp.dimension.fixed.15}",
         "type": "spacing"
       },
-      "md": {
+      "teste-2": {
         "value": "{tp.dimension.fixed.10}",
         "type": "spacing"
       }

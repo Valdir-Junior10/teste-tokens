@@ -1,6 +1,6 @@
 import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
-import { brandsNames, getThemeNames, getCompsNames, getSchemeNames, getBreakpointNames } from "./config/config-get-names.mjs"
+import { brandsNames, getThemeNames, getCompsNames, getSchemeNames, getBreakpointNames } from "./config-get-names.mjs"
 import { configFileBrand, configFileScheme, configFileBreakpoint, configFileComps } from "./config-files.mjs"
 
 register(StyleDictionary);
@@ -32,6 +32,13 @@ const Global = new StyleDictionary({
         }
       ],
     }
+  },
+  log: {
+    warnings: 'warn', // 'warn' | 'error' | 'disabled'
+    verbosity: 'verbose', // 'default' | 'silent' | 'verbose'
+    errors: {
+      brokenReferences: 'throw', // 'throw' | 'console'
+    },
   },
 })
 

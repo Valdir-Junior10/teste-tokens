@@ -8,7 +8,7 @@ import { fileURLToPath } from "url";
 function getBrandsNames(rootFolderPath) {
   const currentFilePath = fileURLToPath(import.meta.url);
   const currentDirPath = path.dirname(currentFilePath);
-  const brandsFolderPath = "../figma/Brands";
+  const brandsFolderPath = "./figma/Brands";
 
   try {
     // Filtro para incluir apenas diretórios que não se chamam Patterns
@@ -32,7 +32,7 @@ function getThemeNames(rootFolderPath, brand) {
   try {
     const currentFilePath = fileURLToPath(import.meta.url);
     const currentDirectoryPath = path.dirname(currentFilePath);
-    const brandsFolderPath = `../figma/Brands/${brand}/Themes`;
+    const brandsFolderPath = `./figma/Brands/${brand}/Themes`;
 
     const folderNames = fs.readdirSync(path.join(currentDirectoryPath, brandsFolderPath), {withFileTypes: true}).filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
 
@@ -49,7 +49,7 @@ function getCompsNames(rootFolderPath, brand, theme) {
   try {
     const currentFilePath = fileURLToPath(import.meta.url);
     const currentDirectoryPath = path.dirname(currentFilePath);
-    const brandsFolderPath = `../figma/Brands/${brand}/Themes/${theme}/Comps`;
+    const brandsFolderPath = `./figma/Brands/${brand}/Themes/${theme}/Comps`;
 
     const folderNames = fs.readdirSync(path.join(currentDirectoryPath, brandsFolderPath), {withFileTypes: true}).filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
 
@@ -66,7 +66,7 @@ function getSchemeNames(rootFolderPath, brand, themes) {
   try {
     const currentFilePath = fileURLToPath(import.meta.url);
     const currentDirectoryPath = path.dirname(currentFilePath);
-    const brandsFolderPath = `../figma/Brands/${brand}/Themes/${themes}/Schemes`;
+    const brandsFolderPath = `./figma/Brands/${brand}/Themes/${themes}/Schemes`;
 
     const folderNames = fs.readdirSync(path.join(currentDirectoryPath, brandsFolderPath), {withFileTypes: true}).filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
 
@@ -83,7 +83,7 @@ function getBreakpointNames(rootFolderPath, brand, themes) {
   try {
     const currentFilePath = fileURLToPath(import.meta.url);
     const currentDirectoryPath = path.dirname(currentFilePath);
-    const brandsFolderPath = `../figma/Brands/${brand}/Themes/${themes}/Breakpoint`;
+    const brandsFolderPath = `./figma/Brands/${brand}/Themes/${themes}/Breakpoint`;
 
     const folderNames = fs.readdirSync(path.join(currentDirectoryPath, brandsFolderPath), {withFileTypes: true}).filter((dirent) => dirent.isDirectory()).map((dirent) => dirent.name);
 
