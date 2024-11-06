@@ -61,7 +61,6 @@ brandsNames.forEach(function (brand) {
   const themesNames = getThemeNames(".", brand);
   themesNames.forEach(function (themes) {
     const comps = getCompsNames(".", brand, themes);
-    console.log("AAAAAAAAAAAAAAAAAAA", comps)
     comps.forEach(function (comps) {
         console.log('======================================');
         console.log(`Processing: [${brand}] [${themes}] [${comps}]`);
