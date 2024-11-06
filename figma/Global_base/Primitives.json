@@ -262,19 +262,19 @@
     },
     "line-height": {
       "1": {
-        "value": "1",
+        "value": "1em",
         "type": "lineHeights"
       },
       "2": {
-        "value": "1.1",
+        "value": "1.1em",
         "type": "lineHeights"
       },
       "3": {
-        "value": "1.2",
+        "value": "1.2em",
         "type": "lineHeights"
       },
       "4": {
-        "value": "1.3",
+        "value": "1.3em",
         "type": "lineHeights"
       },
       "5": {
@@ -346,7 +346,7 @@
     },
     "font-family": {
       "fsemeric": {
-        "value": "fsemeric",
+        "value": "FS Emeric",
         "type": "fontFamilies"
       },
       "ligconsolata": {
@@ -1178,6 +1178,18 @@
           "value": "330",
           "type": "color"
         }
+      },
+      "black": {
+        "value": "#000",
+        "type": "color"
+      },
+      "white": {
+        "value": "#fff",
+        "type": "color"
+      },
+      "transparent": {
+        "value": "hsla(0,0,0,0)",
+        "type": "color"
       }
     }
   }

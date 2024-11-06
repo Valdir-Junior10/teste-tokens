@@ -1,0 +1,22 @@
+{
+  "tp": {
+    "sizing": {
+      "button": {
+        "height": {
+          "sm": {
+            "value": "{tp.dimension.fixed.11}",
+            "type": "sizing"
+          },
+          "md": {
+            "value": "{tp.dimension.fixed.14}",
+            "type": "sizing"
+          },
+          "lg": {
+            "value": "{tp.dimension.fixed.18}",
+            "type": "sizing"
+          }
+        }
+      }
+    }
+  }
+}

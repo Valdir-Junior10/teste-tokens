@@ -1,10 +1,17 @@
 {
   "tokenSetOrder": [
-    "Global_base/Foundation",
     "Global_base/Primitives",
-    "Brands/Medsoft/Themes/Dark/Spacing",
-    "Brands/Medsoft/Themes/Light/Spacing",
-    "Brands/Medme/Themes/Light/Spacing",
-    "Brands/Medme/Themes/Dark/Spacing"
+    "Brands/Medme/Base",
+    "Brands/Medme/Themes/Default/Schemes/Dark/Base",
+    "Brands/Medme/Themes/Default/Schemes/Light/Base",
+    "Brands/Medme/Themes/Default/Breakpoint/360p/Base",
+    "Brands/Medme/Themes/Default/Breakpoint/1200p/Base",
+    "Brands/Medme/Themes/Default/Comps/Button",
+    "Brands/Medme/Themes/Billy/Schemes/Dark/Base",
+    "Brands/Medme/Themes/Billy/Schemes/Light/Base",
+    "Brands/Medme/Themes/Billy/Breakpoint/360p/Base",
+    "Brands/Medme/Themes/Billy/Breakpoint/1200p/Base",
+    "Brands/Medme/Themes/Billy/Comps/Button",
+    "Global_comps/Button"
   ]
 }

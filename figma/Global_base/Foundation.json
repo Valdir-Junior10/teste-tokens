@@ -4,6 +4,10 @@
       "xl": {
         "value": "{tp.dimension.fixed.15}",
         "type": "spacing"
+      },
+      "md": {
+        "value": "{tp.dimension.fixed.10}",
+        "type": "spacing"
       }
     }
   }

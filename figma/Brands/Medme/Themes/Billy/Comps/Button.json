@@ -1,0 +1,66 @@
+{
+  "tp": {
+    "border-radius": {
+      "button": {
+        "value": "{tp.border-radius.full}",
+        "type": "borderRadius"
+      }
+    },
+    "spacing": {
+      "button": {
+        "padding": {
+          "vertical": {
+            "lg": {
+              "value": "{tp.spacing.none}",
+              "type": "spacing"
+            },
+            "md": {
+              "value": "{tp.spacing.none}",
+              "type": "spacing"
+            },
+            "sm": {
+              "value": "{tp.spacing.none}",
+              "type": "spacing"
+            }
+          },
+          "horizontal": {
+            "lg": {
+              "value": "{tp.spacing.5xl}",
+              "type": "spacing"
+            },
+            "md": {
+              "value": "{tp.spacing.3xl}",
+              "type": "spacing"
+            },
+            "sm": {
+              "value": "{tp.spacing.xl}",
+              "type": "spacing"
+            }
+          }
+        }
+      }
+    },
+    "typography": {
+      "button": {
+        "lg": {
+          "value": "{tp.typography.label.bold.md}",
+          "type": "typography"
+        },
+        "md": {
+          "value": "{tp.typography.label.bold.md}",
+          "type": "typography"
+        },
+        "sm": {
+          "value": "{tp.typography.label.bold.sm}",
+          "type": "typography"
+        }
+      }
+    },
+    "border-width": {
+      "button": {
+        "value": "{tp.border-width.sm}",
+        "type": "borderWidth"
+      }
+    }
+  }
+}

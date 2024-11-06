@@ -1,6 +1,6 @@
 import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
-import { brandsNames, getThemeNames, configFile } from "./config.mjs"
+import { brandsNames, getThemeNames, getSchemeNames, getBreakpointNames, configFile } from "./config.mjs"
 
 register(StyleDictionary);
 
@@ -39,13 +39,19 @@ await Global.buildAllPlatforms();
 brandsNames.forEach(function (brand) {
   const themesNames = getThemeNames(".", brand);
   themesNames.forEach(function (themes) {
-    console.log('======================================');
-    console.log(`Processing: [${themes}] [${brand}]`);
+    const schemes = getSchemeNames(".", brand, themes);
+    schemes.forEach(function (scheme) {
+      const breakpoints = getBreakpointNames(".", brand, themes);
+      breakpoints.forEach(function (breakpoint) {
+        console.log('======================================');
+        console.log(`Processing: [${brand}] [${themes}] [${scheme}] [${breakpoint}]`);
 
-    const brandsThemes = new StyleDictionary(configFile(brand, themes));
-    brandsThemes.log.verbose = true;
-    brandsThemes.log.errors.brokenReferences = 'throw'; // Trata referências quebradas como erros
+        const brandsThemes = new StyleDictionary(configFile(brand, themes, scheme, breakpoint));
+        brandsThemes.log.verbose = true;
+        brandsThemes.log.errors.brokenReferences = 'throw'; // Trata referências quebradas como erros
 
-    brandsThemes.buildAllPlatforms()
+        brandsThemes.buildAllPlatforms();
+      });
+    });
   });
 });
