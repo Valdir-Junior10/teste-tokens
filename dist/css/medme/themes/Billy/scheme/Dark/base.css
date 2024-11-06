@@ -1,0 +1,40 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+.medme .theme-billy .scheme-dark {
+  --tp-color-ui-primary-stronger: hsla( #119900, 100%, 90%, 1);
+  --tp-color-ui-primary-strong: hsla( #119900, 100%, 80%, 1);
+  --tp-color-ui-primary-base: hsla( #119900, 100%, 50%, 1);
+  --tp-color-ui-primary-soft: hsla( #119900, 100%, 30%, 1);
+  --tp-color-ui-primary-softer: hsla( #119900, 100%, 10%, 1);
+  --tp-color-ui-neutral-stronger: hsla( 0, 0%, 85%, 1);
+  --tp-color-ui-neutral-strong: hsla( 0, 0%, 65%, 1);
+  --tp-color-ui-neutral-base: hsla( 0, 0%, 45%, 1);
+  --tp-color-ui-neutral-soft: hsla( 0, 0%, 25%, 1);
+  --tp-color-ui-neutral-softer: hsla( 0, 0%, 13%, 1);
+  --tp-color-button-solid-primary-background-default: hsla( #119900, 100%, 50%, 1);
+  --tp-color-button-solid-primary-background-disabled: hsla( #119900, 100%, 30%, 1);
+  --tp-color-button-solid-primary-foreground-default: hsla( #119900, 100%, 10%, 1);
+  --tp-color-button-solid-primary-foreground-disabled: hsla( #119900, 100%, 80%, 1);
+  --tp-color-button-solid-primary-border-default: rgba(0, 0, 0, 0);
+  --tp-color-button-solid-primary-border-disabled: rgba(0, 0, 0, 0);
+  --tp-color-button-border-neutral-background-default: rgba(0, 0, 0, 0);
+  --tp-color-button-border-neutral-background-disabled: rgba(0, 0, 0, 0);
+  --tp-color-button-border-neutral-foreground-default: #ffffff;
+  --tp-color-button-border-neutral-foreground-disabled: hsla( 0, 0%, 65%, 1);
+  --tp-color-button-border-neutral-border-default: hsla( 0, 0%, 45%, 1);
+  --tp-color-button-border-neutral-border-disabled: hsla( 0, 0%, 45%, 1);
+  --tp-color-button-ghost-primary-background-default: rgba(0, 0, 0, 0);
+  --tp-color-button-ghost-primary-background-disabled: rgba(0, 0, 0, 0);
+  --tp-color-button-ghost-primary-foreground-default: hsla( #119900, 100%, 80%, 1);
+  --tp-color-button-ghost-primary-foreground-disabled: hsla( 0, 0%, 45%, 1);
+  --tp-color-button-ghost-primary-border-default: rgba(0, 0, 0, 0);
+  --tp-color-button-ghost-primary-border-disabled: rgba(0, 0, 0, 0);
+  --tp-color-button-ghost-neutral-background-default: rgba(0, 0, 0, 0);
+  --tp-color-button-ghost-neutral-background-disabled: rgba(0, 0, 0, 0);
+  --tp-color-button-ghost-neutral-foreground-default: #ffffff;
+  --tp-color-button-ghost-neutral-foreground-disabled: hsla( 0, 0%, 45%, 1);
+  --tp-color-button-ghost-neutral-border-default: rgba(0, 0, 0, 0);
+  --tp-color-button-ghost-neutral-border-disabled: rgba(0, 0, 0, 0);
+}
