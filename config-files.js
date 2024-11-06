@@ -6,7 +6,7 @@ export class ConfigFile {
       return;
     }
 
-    const selector = `.${brand.toLowerCase()}`;
+    const selector = `.${brand}`;
 
     return {
       source: [
@@ -23,7 +23,7 @@ export class ConfigFile {
             {
               filter: (token) =>
                 token.filePath.includes(`figma/brands/${brand}/base.json`),
-              destination: `${brand.toLowerCase()}/base.css`,
+              destination: `${brand }/base.css`,
               format: 'css/variables',
               options: {
                 selector: selector
@@ -39,7 +39,7 @@ export class ConfigFile {
             {
               filter: (token) =>
                 token.filePath.includes(`figma/brands/${brand}/base.json`),
-              destination: `${brand.toLowerCase()}/base.css`,
+              destination: `${brand }/base.css`,
               format: 'scss/variables',
               options: {
                 selector: selector
@@ -94,9 +94,9 @@ export class ConfigFile {
             {
               filter: (token) =>
                 token.filePath.includes(`${ENTITY_PATH}/base.json`),
-              destination: `${brand.toLowerCase()}/themes/${theme.toLowerCase()}/${entityType}${
+              destination: `${brand}/themes/${theme}/${entityType}${
                 entityType !== 'components'
-                  ? '/' + entityValue.toLowerCase()
+                  ? '/' + entityValue 
                   : ''
               }/base.css`,
               format: 'css/variables',
@@ -112,9 +112,9 @@ export class ConfigFile {
             {
               filter: (token) =>
                 token.filePath.includes(`${ENTITY_PATH}/base.json`),
-              destination: `${brand.toLowerCase()}/themes/${theme.toLowerCase()}/${entityType}${
+              destination: `${brand}/themes/${theme}/${entityType}${
                 entityType !== 'components'
-                  ? '/' + entityValue.toLowerCase()
+                  ? '/' + entityValue 
                   : ''
               }/base.scss`,
               format: 'scss/variables',
@@ -123,26 +123,27 @@ export class ConfigFile {
           ]
         }
       },
-      log: {
-        warnings: 'warn', // 'warn' | 'error' | 'disabled'
-        verbosity: 'verbose', // 'default' | 'silent' | 'verbose'
-        errors: {
-          brokenReferences: 'throw' // 'throw' | 'console'
-        }
-      }
+      // Para detalhar possiveis erros e colissões
+      // log: {
+      //   warnings: 'warn', // 'warn' | 'error' | 'disabled'
+      //   verbosity: 'verbose', // 'default' | 'silent' | 'verbose'
+      //   errors: {
+      //     brokenReferences: 'throw' // 'throw' | 'console'
+      //   }
+      // }
     };
   }
 
   static generateSelector(brand, theme, entityType, entityValue) {
     switch (entityType) {
       case 'schemes':
-        return `.${brand.toLowerCase()}.theme-${theme.toLowerCase()}.scheme-${entityValue.toLowerCase()}`;
+        return `.${brand}.theme-${theme}.scheme-${entityValue}`;
 
       case 'breakpoints':
-        return `.${brand.toLowerCase()}.theme-${theme.toLowerCase()}.breakpoint-${entityValue.toLowerCase()}`;
+        return `.${brand}.theme-${theme}.breakpoint-${entityValue}`;
 
       case 'components':
-        return `.${brand.toLowerCase()}.theme-${theme.toLowerCase()}`;
+        return `.${brand}.theme-${theme}`;
     }
   }
 }

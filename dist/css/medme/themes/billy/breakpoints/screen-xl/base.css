@@ -3,15 +3,6 @@
  */
 
 .medme.theme-billy.breakpoint-screen-xl {
-  --tp-border-radius-full: 50%;
-  --tp-spacing-none: 0px;
-  --tp-spacing-5xl: 48px;
-  --tp-spacing-3xl: 32px;
-  --tp-spacing-xl: 20px;
-  --tp-spacing-sm: 8px;
-  --tp-typography-label-bold-md: 500 16px/1.3em 'FS Emeric';
-  --tp-typography-label-bold-sm: 500 14px/1.3em 'FS Emeric';
-  --tp-border-width-sm: 1px;
   --tp-sizing-button-height-sm: 32px;
   --tp-sizing-button-height-md: 40px;
   --tp-sizing-button-height-lg: 56px;
