@@ -38,7 +38,7 @@ function configFileBrand(brand) {
           {
             filter: (token) =>
               token.filePath.includes(`figma/Brands/${brand}/Base.json`),
-            destination: `${brand.toLowerCase()}/base.css`,
+            destination: `${brand.toLowerCase()}/base.scss`,
             format: 'scss/variables',
             options: {
               selector: selector
@@ -92,7 +92,7 @@ function configFileScheme(brand, theme, scheme) {
           {
             filter: (token) =>
               token.filePath.includes(`${brandSchemePath}/Base.json`),
-            destination: `${brand.toLowerCase()}/themes/${theme.toLowerCase()}/scheme/${scheme.toLowerCase()}/base.css`,
+            destination: `${brand.toLowerCase()}/themes/${theme.toLowerCase()}/scheme/${scheme.toLowerCase()}/base.scss`,
             format: 'scss/variables',
             options: {
               selector: selector
@@ -146,7 +146,7 @@ function configFileBreakpoint(brand, theme, breakpoint) {
           {
             filter: (token) =>
               token.filePath.includes(`${brandBreakpointPath}/Base.json`),
-            destination: `${brand.toLowerCase()}/themes/${theme.toLowerCase()}/breakpoint/${breakpoint.toLowerCase()}/base.css`,
+            destination: `${brand.toLowerCase()}/themes/${theme.toLowerCase()}/breakpoint/${breakpoint.toLowerCase()}/base.scss`,
             format: 'scss/variables',
             options: {
               selector: selector
@@ -200,7 +200,7 @@ function configFileComps(brand, theme, comps) {
           {
             filter: (token) =>
               token.filePath.includes(`${brandCompsPath}/${comps}.json`),
-            destination: `${brand.toLowerCase()}/themes/${theme.toLowerCase()}/comps/base.css`,
+            destination: `${brand.toLowerCase()}/themes/${theme.toLowerCase()}/comps/base.scss`,
             format: 'scss/variables',
             options: {
               selector: selector
