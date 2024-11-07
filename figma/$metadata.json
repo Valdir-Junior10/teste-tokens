@@ -2,7 +2,7 @@
   "tokenSetOrder": [
     "global-base/primitives",
     "global-base/foundation",
-    "brands/medme/base",
+    "brands/medme/foundation",
     "brands/medme/themes/default/schemes/dark/base",
     "brands/medme/themes/default/schemes/light/base",
     "brands/medme/themes/default/breakpoints/screen-xs/base",

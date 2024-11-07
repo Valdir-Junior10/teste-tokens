@@ -624,7 +624,7 @@
         },
         "hue": {
           "value": "0",
-          "type": "color"
+          "type": "other"
         }
       },
       "red": {
@@ -666,7 +666,7 @@
         },
         "hue": {
           "value": "354",
-          "type": "color"
+          "type": "other"
         }
       },
       "green": {
@@ -708,7 +708,7 @@
         },
         "hue": {
           "value": "152",
-          "type": "color"
+          "type": "other"
         }
       },
       "yellow": {
@@ -750,7 +750,7 @@
         },
         "hue": {
           "value": "45",
-          "type": "color"
+          "type": "other"
         }
       },
       "blue": {
@@ -792,7 +792,7 @@
         },
         "hue": {
           "value": "216",
-          "type": "color"
+          "type": "other"
         }
       },
       "purple": {
@@ -834,7 +834,7 @@
         },
         "hue": {
           "value": "265",
-          "type": "color"
+          "type": "other"
         }
       },
       "orange": {
@@ -876,7 +876,7 @@
         },
         "hue": {
           "value": "27",
-          "type": "color"
+          "type": "other"
         }
       },
       "cyan": {
@@ -918,7 +918,7 @@
         },
         "hue": {
           "value": "190",
-          "type": "color"
+          "type": "other"
         }
       },
       "pink": {
@@ -960,7 +960,7 @@
         },
         "hue": {
           "value": "330",
-          "type": "color"
+          "type": "other"
         }
       },
       "black": {
