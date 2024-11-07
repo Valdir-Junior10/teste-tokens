@@ -1,4 +1,4 @@
-// Configuração dos arquivos de tokens que serão gerados pelo builder
+import path from 'path';
 export class ConfigFile {
   static brand(brand) {
     if (!brand) {
@@ -23,7 +23,7 @@ export class ConfigFile {
             {
               filter: (token) =>
                 token.filePath.includes(`figma/brands/${brand}/foundation.json`),
-              destination: `${brand }/base.css`,
+              destination: `${brand}/base.css`,
               format: 'css/variables',
               options: {
                 selector: selector
@@ -39,7 +39,7 @@ export class ConfigFile {
             {
               filter: (token) =>
                 token.filePath.includes(`figma/brands/${brand}/foundation.json`),
-              destination: `${brand }/base.css`,
+              destination: `${brand}/base.scss`,
               format: 'scss/variables',
               options: {
                 selector: selector
@@ -69,7 +69,7 @@ export class ConfigFile {
       return;
     }
 
-    const ENTITY_PATH = `figma/brands/${brand}/themes/${theme}/${entityType}/${entityValue}`;
+    const ENTITY_PATH = `figma/brands/${brand}/themes/${theme}/${entityType}`;
 
     const selector = this.generateSelector(
       brand,
@@ -82,7 +82,7 @@ export class ConfigFile {
       source: [
         `figma/global-base/*.json`,
         `figma/brands/${brand}/*.json`,
-        `${ENTITY_PATH}/*.json`,
+        `${ENTITY_PATH}/${entityValue}`,
         `figma/brands/patterns/*.json`
       ],
       platforms: {
@@ -93,12 +93,8 @@ export class ConfigFile {
           files: [
             {
               filter: (token) =>
-                token.filePath.includes(`${ENTITY_PATH}/base.json`),
-              destination: `${brand}/themes/${theme}/${entityType}${
-                entityType !== 'components'
-                  ? '/' + entityValue 
-                  : ''
-              }/base.css`,
+                token.filePath.includes(`${ENTITY_PATH}/${entityValue}`),
+              destination: `${brand}/themes/${theme}/${entityType}/${path.basename(entityValue, '.json')}.css`,
               format: 'css/variables',
               options: { selector }
             }
@@ -111,12 +107,8 @@ export class ConfigFile {
           files: [
             {
               filter: (token) =>
-                token.filePath.includes(`${ENTITY_PATH}/base.json`),
-              destination: `${brand}/themes/${theme}/${entityType}${
-                entityType !== 'components'
-                  ? '/' + entityValue 
-                  : ''
-              }/base.scss`,
+                token.filePath.includes(`${ENTITY_PATH}/${entityValue}`),
+              destination: `${brand}/themes/${theme}/${entityType}/${path.basename(entityValue, '.json')}.scss`,
               format: 'scss/variables',
               options: { selector }
             }
@@ -137,10 +129,10 @@ export class ConfigFile {
   static generateSelector(brand, theme, entityType, entityValue) {
     switch (entityType) {
       case 'schemes':
-        return `.${brand}.theme-${theme}.scheme-${entityValue}`;
+        return `.${brand}.theme-${theme}.scheme-${path.basename(entityValue, '.json')}`;
 
       case 'breakpoints':
-        return `.${brand}.theme-${theme}.breakpoint-${entityValue}`;
+        return `.${brand}.theme-${theme}.breakpoint-${path.basename(entityValue, '.json')}`;
 
       case 'components':
         return `.${brand}.theme-${theme}`;

@@ -1,3 +1,4 @@
+//teste
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -26,18 +27,18 @@ export class Entities {
   }
 
   static getComponents(brand, theme) {
-    return this.get(brand, theme, 'components');
+    return this.get(brand, theme, 'components', '.json');
   }
 
   static getSchemes(brand, theme) {
-    return this.get(brand, theme, 'schemes');
+    return this.get(brand, theme, 'schemes', '.json');
   }
 
   static getBreakpoints(brand, theme) {
-    return this.get(brand, theme, 'breakpoints');
+    return this.get(brand, theme, 'breakpoints', '.json');
   }
 
-  static get(brand, theme = null, entity = null) {
+  static get(brand, theme = null, entity = null, fileExtension = null) {
     try {
       const BRANDS_FOLDER_PATH = theme
         ? `./figma/brands/${brand}/themes/${theme}/${entity}`
@@ -47,7 +48,12 @@ export class Entities {
         .readdirSync(path.join(this.CURRENT_DIR_PATH, BRANDS_FOLDER_PATH), {
           withFileTypes: true
         })
-        .filter((dirent) => dirent.isDirectory())
+        .filter((dirent) => {
+          if (fileExtension) {
+            return dirent.isFile() && dirent.name.endsWith(fileExtension);
+          }
+          return dirent.isDirectory();
+        })
         .map((dirent) => dirent.name);
     } catch (error) {
       console.error('Error reading folder:', error);
