@@ -5,6 +5,22 @@ import { Entities } from './entities.js';
 
 register(StyleDictionary);
 
+StyleDictionary.registerTransform({
+  name: 'value/shadow-css',
+  type: 'value',
+  transform: (token) => {
+    if (Array.isArray(token.value) && token.type === 'boxShadow') {
+      return token.value
+        .map((shadow) =>
+          `${shadow.x}px ${shadow.y}px ${shadow.blur}px ${shadow.spread}px ${shadow.color}`
+        )
+        .join(', ');
+    } else {
+      return token.value;
+    }
+  },
+});
+
 class Build {
   static BRAND_NAMES = Entities.getBrands();
 
@@ -22,25 +38,27 @@ class Build {
       platforms: {
         css: {
           transformGroup: 'css',
+          transforms: ['value/shadow-css'],
           buildPath: 'dist/css/',
           files: [
             {
               filter: (token) =>
                 token.filePath.includes(`figma/global-base/foundation.json`),
               destination: 'global.css',
-              format: 'css/variables'
+              format: 'css/variables',
             }
           ]
         },
         scss: {
           transformGroup: 'scss',
+          transforms: ['value/shadow-css'],
           buildPath: 'dist/scss/',
           files: [
             {
               filter: (token) =>
                 token.filePath.includes(`figma/global-base/foundation.json`),
               destination: 'global.scss',
-              format: 'scss/variables'
+              format: 'scss/variables',
             }
           ]
         }

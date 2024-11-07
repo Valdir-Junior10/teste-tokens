@@ -38,7 +38,7 @@ export class ConfigFile {
           files: [
             {
               filter: (token) =>
-                token.filePath.includes(`figma/brands/${brand}/base.json`),
+                token.filePath.includes(`figma/brands/${brand}/foundation.json`),
               destination: `${brand }/base.css`,
               format: 'scss/variables',
               options: {
